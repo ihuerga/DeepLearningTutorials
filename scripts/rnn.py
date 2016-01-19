@@ -73,8 +73,8 @@ class RNN(object):
         self.activation = activation
 
         # symbolic links to the inputs (for a minibatch)
-        x = T.dmatrix('x')
-        y = T.dmatrix('y')
+        x = T.matrix('x', dtype=theano.config.floatX)
+        y = T.matrix('y', dtype=theano.config.floatX)
 
         # forward pass with recurrence y_t_minus_1 (only 1 time step in context window)
         def forward_pass(x_t, h_tm2, h_tm1):
@@ -115,7 +115,7 @@ class RNN(object):
         # L2 regularization
 
         # learning rate
-        lr = T.scalar('lr')
+        lr = T.scalar('lr', dtype=theano.config.floatX)
         self.y_prediction = y_pred
         # cost function for a real number prediction
         cost = T.mean((y_pred - y)) ** 2 + self.L1_reg * self.L1 + self.L2_reg * self.L2_sqr
