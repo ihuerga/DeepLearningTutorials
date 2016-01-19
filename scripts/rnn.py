@@ -31,39 +31,39 @@ class RNN(object):
         self.theta1 = theano.shared(name='theta1',
                                     value=0.2 * np.random.uniform(-1.0, 1.0,
                                     (n_inputs, n_hidden))
-                                    .astype(theano.config.float32))
+                                    .astype(theano.config.floatX))
 
         # thetah, recurrent weights matrix (hidden to hidden)
         self.thetah1 = theano.shared(name='thetah1',
                                     value=0.2 * np.random.uniform(-1.0, 1.0,
                                     (n_hidden, n_hidden))
-                                    .astype(theano.config.float32))
+                                    .astype(theano.config.floatX))
 
         self.thetah2 = theano.shared(name='thetah2',
                                     value=0.2 * np.random.uniform(-1.0, 1.0,
                                     (n_hidden, n_hidden))
-                                    .astype(theano.config.float32))
+                                    .astype(theano.config.floatX))
 
         # theta2, weight matrix from hiddent to output units
         self.theta2 = theano.shared(name='theta2',
                                     value=0.2 * np.random.uniform(-1.0, 1.0,
                                     (n_hidden, n_output))
-                                    .astype(theano.config.float32))
+                                    .astype(theano.config.floatX))
 
         # bh, bias vector for hidden units
         self.bh = theano.shared(name='bh',
                                 value=np.zeros(n_hidden,
-                                dtype=theano.config.float32))
+                                dtype=theano.config.floatX))
 
         # bout, bias vector for output units
         self.bout = theano.shared(name='bout',
                                   value=np.zeros(n_output,
-                                  dtype=theano.config.float32))
+                                  dtype=theano.config.floatX))
 
         # h0, hidden states
         self.h0 = theano.shared(name='h0',
                                 value=np.zeros((2,n_hidden),
-                                dtype=theano.config.float32))
+                                dtype=theano.config.floatX))
 
         # all the parameters
         self.params = [self.theta1, self.thetah1, self.thetah2,
